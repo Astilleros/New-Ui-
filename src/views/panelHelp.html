@@ -1,0 +1,151 @@
+<h1> Help? </h1>
+
+<section class="nav">
+  <ul>
+    <li><a href="#doc-firststeps"># First Steps</a></li>
+    <li>
+      <ul>
+        <li><a href="#doc-reference">1. Reference Image</a></li>
+        <li><a href="#doc-alignment">2. Alignment References</a></li>
+        <li><a href="#doc-digits">3. Define Digits</a></li>
+        <li><a href="#doc-params">5. General parameters</a></li>
+        <li><a href="#doc-finish">6. Finished!</a></li>
+      </ul>
+    </li>
+    <li><a href="#sysinfo"># System Info</a></li>
+  </ul>
+</section>
+
+
+<h2 id="doc-firststeps">First Steps</h2>
+<section id="doc-reference">
+  <h3>1. Reference Image</h3>
+  <p class="left">
+    The reference image is the base to define the digits, counters and references positions.
+  </p>
+  <p class="left">
+    Firstly you see the default image. Use the Button "Create New Reference" to start to create your own
+    reference image.
+  </p>
+  <p class="left">
+    Most important feature is a straight alignment of the image. Use the Pre-rotate angle and the fine alignment
+    to adjust the rotation of the image
+  </p>
+  <p class="left">
+    Store the reference image by pushing "Update Reference Image".
+  </p>
+</section>
+
+<section id="doc-alignment">
+  <h3>2. Alignment References</h3>
+  <p class="left">
+    Two opposite alignment references are needed to identify unique fix points on the image.
+  </p>
+  <p class="left">
+    Firstly you see the default image. Use the Button "Create New Reference" to start to create your own
+    reference image.
+  </p>
+  <p class="left">
+    Most important feature is a straight alignment of the image. Use the Pre-rotate angle and the fine alignment
+    to adjust the rotation of the image
+  </p>
+  <p class="left">
+    Store the reference image by pushing "Update Reference Image".
+  </p>
+  <p class="left">You can switch between the two reference with "Select Reference".</p>
+  <p class="left">Don't forget to save your changes with "Save to Config.ini"!.</p>
+</section>
+
+<section id="doc-digits">
+  <h3>3. Define Digits</h3>
+  <p class="left">
+    Here you define your digits you want to read. If you have more than one number on the reading you can define
+    several numbers with the "Number" selector. There you can also define new numbers.
+  </p>
+  <p class="left">
+    With the drop down menue "ROI x" you can change between the different digits. Mark them with the
+    mouse or the coordinates.
+  </p>
+  <p class="left">
+    To create new ROIs use "New ROIs". The order of the ROIs defines the positon within the reading. 
+  </p>
+  <p class="left">
+    You can change it with "move Next" / "move Previous".
+  </p>
+  <p class="left">
+    Don't forget to save your changes with "Save all to Config.ini"!.
+  </p>
+</section>
+
+<section id="doc-analogs">
+  <h3>4. Define Analogs</h3>
+  <p class="left">
+    Here you define your analog counters you want to read. If you have more than one number on the reading you
+    can define several numbers with the "Number" selector. There you can also define new numbers. If you
+    do not have analog counters delete all ROIs.
+  </p>
+  <p class="left">
+    With the drop down menue "ROI x" you can change between the different counters. Mark them with the
+    mouse or the coordinates.
+  </p>
+  <p class="left">
+    To create new ROIs use "New ROIs". The order of the ROIs defines the positon within the reading. 
+    You can change it with "move Next" / "move Previous".
+  </p>
+  <p class="left">
+    Don't forget to save your changes with "Save all to Config.ini"!.
+  </p>
+</section>
+
+<section id="doc-params">
+  <h3>5. General parameters</h3>
+    <p class="left">
+      Here you define additional setting. The settings should fit for a normal setup.
+    </p>
+    <p class="left">
+      Only if you want to connect to a MQTT-broker you need to adjust the corresponding parameters.
+    </p>
+    <p class="left">
+      Don't forget to save your changes with "Save all to Config.ini"!.
+    </p>
+    <p class="left">
+      You should not reboot here, but leave the setup modus on the next page.
+    </p>
+  </section>
+
+  <section id="doc-finish">
+    <h3>6. Finished!</h3>
+      <p class="left">
+        Now you are finished with the setup and ready to reboot to the normal mode.
+      </p>
+      <p class="left">
+        Once you have pushed below button, the setup modus will be left and the digitizer start to normal operation
+        mode.
+      </p>
+      <p class="left">
+        After a view seconds you can reload this page. It will take two to four minutes, until you get the first
+        reading.
+      </p>
+      <p class="left">
+        All settings can be changed as well in the configuration menue in normal operation mode.
+      </p>
+      <p class="around">
+        <button id="leaveSetup">Leave Setup Modus and Reboot to Normal</button>
+      </p>
+  </section>
+
+  <h2>System Info</h2>
+  <section>
+      <p>Last restart:<span id="starttime"></span></p>
+      <p>Hostname:<span id="Hostname"></span></p>
+      <p>IP-Address:<span id="IP"></span></p>
+      <p>WLan-SSID:<span id="SSID"></span></p>
+      <p>Git-Branch:<span id="GitBranch"></span></p>
+      <p>Git-Base-Branch:<span id="GitBaseBranch"></span></p>
+      <p>Git-Version:<span id="GitVersion"></span></p>
+      <p>Build Time:<span id="BuildTime"></span></p>
+      <p>HTML Version:<span id="HTMLVersion"></span></p>
+  </section>
+
+
+</div>

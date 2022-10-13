@@ -1,0 +1,28 @@
+<h1>PostProcessing</h1>
+<section>
+    <p class="center">
+        <input type="checkbox" id="PCPPSS_EnabledChk"><label>Enable PostProcessing</label>
+    </p>
+    <hr>
+    <p class="center">
+        <input type="checkbox" id="PCPPSS_PreValueUse"><label>Use previous values</label>
+    </p>
+    <p>
+        Time window:
+        <span class="number">
+            <span onclick="minus(this)" >-</span>
+            <input id="PCPPSS_PreValueAgeStartup" type="number" >
+            <span onclick="plus(this)" class="plus">+</span>
+        </span>
+    </p>
+    <p class="center">
+        <input type="checkbox" id="PCPPSS_AllowNegativeRates"><label>Allow negative rates</label>
+    </p>
+    <p class="center">
+        <input type="checkbox" id="PCPPSS_ErrorMessage"><label>Allow error messages</label>
+    </p>
+    <hr>
+    <p class="around">
+        <button class="red" id="PCPPSS_SaveBtn">Save**</button>
+    </p>
+</section>

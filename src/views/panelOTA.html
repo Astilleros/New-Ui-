@@ -1,0 +1,47 @@
+<h1>OTA</h1>
+<section class="trans">
+    <section>
+        <h3>Releases</h3>
+        <p class="left">
+            Check the release page to see if there is an update available.
+        </p>
+        <p class="center">
+            <a href="https://github.com/jomjol/AI-on-the-edge-device/releases"><button class="green"> Release Page </button></a>
+        </p>
+        <h4>Tips:</h4>
+        <p class="left">
+            Normally, the overall update package (<i>update__*.zip</i>) is your best choice!
+        </p>
+        <p class="left">
+            Alternatively you can use the old style firmware__*.bin and web interface (html__*.zip).
+        </p>
+        <p class="left">
+            However it is strongly recommended to update firmware and web interface at the same time!
+        </p>
+    </section>
+
+    <section>
+        <h4>Update</h4>
+        <p class="left">Do not reload the page or switch to another page while the update is in progress!</p>
+    
+        <p class="left">
+            Select the file containig the update ( <i>update__*.zip</i>, <i>firmware__*.bin</i>,
+            <i>html__*.zip</i>, <i>*.tfl/tflite</i>)
+        </p>
+        <p class="center">
+            <button class="blue"><input id="newfile" type="file"></button>
+        </p>
+    
+        <p class="center">
+            <button class="red" id="doUpdate">Upload and update.</button>
+        </p>
+    </section>
+    <section>
+        <h4><span id="status">Status: idle</span></h4>
+        <h4><span id="progress"></span></h4>
+    </section>
+
+
+
+
+</section>

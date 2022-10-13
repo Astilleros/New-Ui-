@@ -1,0 +1,96 @@
+<h1>Define Alignment References</h1>
+
+<section class="row trans">
+
+  <section>
+    <canvas id="PAcanvas"></canvas>
+    <p class="center">
+      <input class="w3-check" type="checkbox" id="PApointer"><label>Pointer</label>
+      <input class="w3-check" type="checkbox" id="PAgrid"><label>Grid</label>
+    </p>
+  </section>
+
+  <section>
+    <h4>References</h4>
+    <p class="around">
+      <select id="index" name="reference">
+        <option value="0" selected>Reference 0</option>
+        <option value="1">Reference 1</option>
+      </select>
+    </p>
+
+    <input type="text" name="name" id="name" style="display: none;" disabled>
+    <p>
+      x: 
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input type="number" id="PArefx" step=1>
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+      y: 
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input type="number" id="PArefy" step=1>
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+
+    <p>
+      dx: 
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input type="number" id="PArefdx" step=1>
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+      dy: 
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input type="number" id="PArefdy" step=1>
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+
+    <section>
+      <button class="red" id="updatereference">Update Reference</button>
+      <img id="img_ref_org">
+      <button class="blue" id="enhancecontrast">Enhance Contrast</button>
+      <img id="img_ref">
+    </section>
+    <hr>
+    <p class="around">
+      <button class="red" id="PAsaveroi">Save</button>
+    </p>
+  </section>
+  <section>
+      <h4>Advanced **</h4>
+      <p>
+          SearchFieldX:
+          <span class="number">
+            <span onclick="minus(this)" >-</span>
+            <input id="PA_SearchFieldX" type="number">
+            <span onclick="plus(this)" class="plus">+</span>
+          </span>
+      </p>
+      <p>
+          SearchFieldY:
+          <span class="number">
+            <span onclick="minus(this)" >-</span>
+            <input id="PA_SearchFieldY" type="number">
+            <span onclick="plus(this)" class="plus">+</span>
+          </span>
+      </p>
+      <p>      
+          Mode:
+          <select id="PA_AlignmentAlgo">
+            <option value="Default">Default</option>
+            <option value="highAccuracy" >HighAccuracy</option>
+            <option value="fast" >Fast</option>
+          </select>
+      </p>
+      <hr>
+      <p class="around">
+        <button class="red" id="PAsavereboot">Save**</button>
+      </p>
+  </section>
+
+</section>

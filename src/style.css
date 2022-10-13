@@ -1,0 +1,628 @@
+:root {
+    --white: rgb(245, 245, 245);
+    --mingrey: rgb(110, 110, 110);
+    --grey: rgb(70, 70, 70);
+    --black: rgb(35, 35, 35);
+    --red: rgb(201, 0, 0);
+}
+
+iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none
+}
+
+/* Cleaned */
+* {
+    font-size: 18px;
+    margin: 0px;
+    padding: 0px;
+    background-color: var(--grey);
+    color: var(--white);
+    font-family: "Lucida Console", "Courier New", monospace;
+    box-sizing: border-box;
+}
+
+.view {
+    display: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    width: 100%;
+    padding: 0;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    padding: 30px 0;
+    font-size: 2.6em;
+    border: solid var(--mingrey);
+    border-width: 0 0 3px 0;
+}
+
+h2 {
+    padding: 25px 0;
+    font-size: 2.1em;
+    border: dotted var(--mingrey);
+    border-width: 0 0 2px 0;
+}
+
+h3 {
+    padding: 15px 0;
+    font-size: 1.7em;
+    border: solid var(--mingrey);
+    border-width: 0 0 1px 0;
+}
+
+h4 {
+    padding: 10px 0;
+    font-size: 1.3em;
+    border: dotted var(--mingrey);
+    border-width: 0 0 1px 0;
+}
+
+
+.panel {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+section {
+    width: fit-content;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: var(--white);
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+section.trans {
+    background-color: transparent;
+}
+
+section.trans section {
+    margin: 10px;
+}
+
+section * {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+section p {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+}
+
+
+section p.rigth {
+    justify-content: right;
+    align-items: right;
+}
+
+section p.center {
+    justify-content: center;
+    align-items: center;
+}
+
+section p.left {
+    justify-content: left;
+    align-items: left;
+}
+
+section p.around {
+    justify-content: space-around;
+}
+
+
+section.nav a {
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--black);
+}
+
+section.nav ul {
+    list-style: none;
+}
+
+section.nav ul li {
+    margin: 10px;
+
+}
+
+section.nav ul li a {
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--black);
+    text-decoration: underline;
+}
+
+
+/** TABLE */
+table {
+    margin: 20px;
+    border: solid 1px var(--mingrey);
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table thead tr th {
+    background-color: var(--black);
+    border: solid 1px var(--grey);
+    color: var(--white);
+    padding: 10px;
+}
+
+table tbody tr:hover {
+    background-color: var(--grey);
+    color: var(--white);
+}
+
+table tbody tr td {
+    border: solid 1px var(--mingrey);
+    padding: 10px 20px;
+}
+
+table tbody tr td:hover {
+    cursor: pointer;
+    background-color: var(--red);
+    color: var(--white);
+}
+
+
+
+input[type="file"]::file-selector-button {
+    display: none
+}
+input[type="file"] {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+/** NAV */
+.navbar {
+    list-style: none;
+    background-color: rgb(34, 34, 34);
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar * {
+    background-color: transparent;
+}
+
+.navbar li {
+    background-color: rgb(34, 34, 34);
+    padding: 10px 15px;
+    display: block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar li div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar li div * {
+    padding: 5px;
+}
+
+.navbar li:hover {
+    background-color: red;
+}
+
+.navbar li ul {
+    display: none;
+}
+
+.navbar li ul li a {
+    float: none;
+    padding: 15px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+
+.navbar li:hover ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+
+
+
+/** SPINNER */
+.panelSpinner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.spinner {
+    border: 8px solid rgb(204, 204, 204);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border-left-color: rgb(255, 0, 0);
+
+    animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* BUTTONS */
+button {
+    min-width: 100px;
+    padding: 7px 13px;
+    margin: 5px 10px;
+    border: 1px dashed rgb(51, 51, 51);
+    color: white;
+    background-color: rgb(51, 51, 51);
+    border-radius: 0.3rem;
+    cursor: pointer;
+
+}
+
+button:hover {
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    background-color: transparent;
+    color: rgb(51, 51, 51);
+}
+
+button.red {
+    border: 1px dashed rgb(255, 55, 55);
+    background-color: rgb(255, 55, 55);
+}
+
+button.red:hover {
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    background-color: transparent;
+    color: rgb(255, 55, 55);
+}
+
+button.blue {
+    border: 1px dashed rgb(86, 131, 255);
+    background-color: rgb(86, 131, 255);
+}
+
+button.blue:hover {
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    background-color: transparent;
+    color: rgb(86, 131, 255);
+}
+
+button.green {
+    border: 1px dashed rgb(55, 202, 50);
+    background-color: rgb(55, 202, 50);
+}
+
+button.green:hover {
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    background-color: transparent;
+    color: rgb(55, 202, 50);
+}
+
+button.orange {
+    border: 1px dashed tomato;
+    background-color: tomato;
+}
+
+button.orange:hover {
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    background-color: transparent;
+    color: tomato;
+}
+
+hr {
+    width: 100%;
+    height: 3px;
+    background-color: var(var(--grey));
+    margin: 5px 0px;
+    border-width: 0;
+    color: var(var(--grey));
+    background-color: gray
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* INPUTS */
+input {
+    cursor: pointer;
+    margin: 5px 10px;
+}
+
+input[type="text"] {
+    box-shadow: inset #abacaf 0 0 0 2px;
+    border: 0;
+    appearance: none;
+    min-width: 400px;
+    position: relative;
+    border-radius: 3px;
+    height: 40px;
+    transition: all .2s ease;
+
+}
+
+input[type="text"]:hover {
+    box-shadow: 0 0 0 0 #fff inset, #1de9b6 0 0 0 2px;
+}
+
+input[type="text"]:focus {
+    background: #fff;
+    outline: 0;
+    box-shadow: 0 0 0 0 #fff inset, #1de9b6 0 0 0 3px;
+}
+
+/* CHECKBOX */
+input[type="checkbox"] {
+    margin: 10px;
+    display: inline-block;
+    transform: scale(2);
+    margin-right: 5px;
+}
+
+input[type="checkbox"]+label {
+    cursor: pointer;
+    display: inline-block;
+    padding: 7px 13px;
+}
+
+
+/* SELECTS */
+select {
+    cursor: pointer;
+    /* styling */
+    background-color: white;
+    border: 2px solid rgb(51, 51, 51);
+    border-radius: 0.3rem;
+    display: inline-block;
+    padding: 0.5em 3.5em 0.5em 1em;
+
+    /* reset */
+    margin: 1px;
+    box-sizing: border-box;
+    -moz-appearance: none;
+    /* Firefox */
+    -webkit-appearance: none;
+    /* Safari and Chrome */
+    appearance: none;
+
+    background-image:
+        linear-gradient(45deg, transparent 50%, white 50%),
+        linear-gradient(135deg, white 50%, transparent 50%),
+        linear-gradient(to right, rgb(51, 51, 51), rgb(51, 51, 51));
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        100% 0;
+    background-size:
+        5px 5px,
+        5px 5px,
+        2.5em 2.5em;
+    background-repeat: no-repeat;
+}
+
+select:focus {
+    background-image:
+        linear-gradient(45deg, white 50%, transparent 50%),
+        linear-gradient(135deg, transparent 50%, white 50%),
+        linear-gradient(to right, rgb(51, 51, 51), rgb(51, 51, 51));
+    background-position:
+        calc(100% - 15px) 1em,
+        calc(100% - 20px) 1em,
+        100% 0;
+}
+
+
+/* NUMBERS */
+input[type="number"] {
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.number {
+    background-color: var(--white);
+    border: 1px dashed var(--grey);
+    border-radius: 0.3rem;
+    margin: 2px 10px 2px 4px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.number span {
+    width: fit-content;
+    margin: 2px;
+    padding: 6px;
+    background-color: var(--grey);
+    font-size: 20px;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    color: white;
+}
+
+.number input[type=number] {
+    background-color: var(--white);
+    max-width: 3rem;
+    border: 0;
+    font-weight: bold;
+    text-align: center;
+    color: var(--black);
+}
+
+
+
+/** DOC & FAQ & INFO*/
+
+
+
+
+.fixedUpNav {
+    position: fixed;
+    /* Fixed/sticky position */
+    bottom: 20px;
+    /* Place the button at the bottom of the page */
+    right: 30px;
+    /* Place the button 30px from the right */
+    z-index: 99;
+    /* Make sure it does not overlap */
+    border: none;
+    /* Remove borders */
+    outline: none;
+    /* Remove outline */
+    background-color: var(--white);
+    color: var(--black);
+    /* Text color */
+    cursor: pointer;
+    /* Add a mouse pointer on hover */
+    padding: 15px;
+    /* Some padding */
+    border-radius: 50%;
+    /* Rounded corners */
+    font-size: 18px;
+    /* Increase font size */
+}
+
+
+/** PANEL REBOOT*/
+#PRBO_counter, #PRBO_fastreboot, #PRBO_cancelreboot {
+    background-color: transparent;
+    color: red;
+    font-size: 300px;
+    margin: 30px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#PRBO_fastreboot {
+    color: red;
+    font-weight: bold;
+    font-size: 40px;
+    border: 3px solid red;
+    border-color: red;
+}
+
+#PRBO_fastreboot:hover {
+    background-color: red;
+    color: white;
+}
+
+#PRBO_cancelreboot {
+    background-color: rgb(0, 255, 42);
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    border: 3px solid rgb(0, 255, 42);
+    border-color: rgb(0, 255, 42);
+}
+
+/** FILESERVER NAVBAR*/
+#FS_navBar {
+    display: inline;
+}
+#FS_navBar li {
+    text-decoration: none;
+    text-decoration: underline;
+    cursor: pointer;
+    display: inline;
+    background-color: var(--black);
+    color: var(--white);
+    width: fit-content;
+    min-width: 40px;
+    padding: 10px 15px;
+    margin: 5px 5px;
+}
+
+#PRBO_spinner{
+    background-color: transparent;
+}

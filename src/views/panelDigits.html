@@ -1,0 +1,72 @@
+<h1>Edit digits template</h1>
+
+<section class="row trans">
+
+  <section>
+
+    <canvas id="PDcanvas"></canvas>
+    <p class="center">
+      <input type="checkbox" id="Category_Digits_enabled"><label class="red">Enable edit</label>
+      <input type="checkbox" id="PDpointer"><label>Pointer</label>
+      <input type="checkbox" id="PDgrid"><label>Grid</label>
+    </p>
+  </section>
+  <section>
+    <p>
+      x:
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input type="number" id="PDrefx" step=1>
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+      y:
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input type="number" id="PDrefy" step=1>
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p>
+      dx:
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input type="number" id="PDrefdx" step=1>
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+      dy:
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input type="number" id="PDrefdy" step=1>
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p class="center">
+      <input type="checkbox" id="PDlockAR"><label>Lock aspect ratio</label>
+    </p>
+  </section>
+  <section>
+    <h4>Numbers</h4>
+    <p class="center">
+      <select id="PDNumbers_value1"></select>
+      <button class="green" id="PDrenameNumber">Rename</button>
+      <button class="red" id="PDremoveNumber">Delete</button>
+      <button class="blue" id="PDnewNumber">New number</button>
+    </p>
+    <hr>
+    <h4>Digits</h4>
+    <p class="around">
+      <select id="PDindex"></select>
+      <button id="PDmoveNext">move Next</button>
+      <button id="PDmovePrevious">move Previous</button>
+    </p>
+    <p class="around">
+      <button class="green" id="PDrenameROI">Rename</button>
+      <button class="red" id="PDdeleteROI">Delete</button>
+      <button class="blue" id="PDnewROI">New Digit</button>
+    </p>
+    <hr>
+    <p class="around">
+      <button class="red" id="PDsaveroi">Save changes</button>
+    </p>
+  </section>
+</section>

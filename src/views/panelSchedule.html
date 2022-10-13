@@ -1,0 +1,81 @@
+<h1>Device</h1>
+<section>
+    <p>
+        Auto start:
+        <select id="PCFG_AutoStart">
+            <option value="true">ON</option>
+            <option value="false">OFF</option>
+        </select>
+    </p>
+    <p>
+        Minutes between starts:
+        <span class="number">
+          <span onclick="minus(this)" >-</span>
+          <input type="number" id="PCFG_Interval" step=1>
+          <span onclick="plus(this)" class="plus">+</span>
+        </span>
+    </p>
+</section>
+<h1>Logger</h1>
+<section class="row trans">
+    <section>
+        <h4>Camera photos</h4>
+        <p class="center">
+            <input type="checkbox" id="PCFG_RawLogEnabledChk"><label class="red">Enable log</label>
+        </p>
+        <p>
+            Store path:
+            <input type="text" id="PCFG_RawLogImageLocation">
+        </p>
+        <p>
+            Days to store logs:
+            <span class="number">
+              <span onclick="minus(this)" >-</span>
+              <input type="number" id="PCFG_RawLogfileRetentionInDays" step=1>
+              <span onclick="plus(this)" class="plus">+</span>
+            </span>
+        </p>
+    </section>
+    <section>
+        <h4>Digit cuts</h4>
+        <p class="center">
+            <input type="checkbox" id="PCFG_DigitLogEnabledChk"><label class="red">Enable log</label>
+        </p>
+        <p>
+            Store path:
+            <input type="text" id="PCFG_DigitLogImageLocation">
+        </p>
+        <p>
+            Days to store logs:
+            <span class="number">
+              <span onclick="minus(this)" >-</span>
+              <input type="number" id="PCFG_DigitLogfileRetentionInDays" step=1>
+              <span onclick="plus(this)" class="plus">+</span>
+            </span>
+        </p>
+    </section>
+    <section>
+        <h4>Analog cuts</h4>
+        <p class="center">
+            <input type="checkbox" id="PCFG_AnalogLogEnabledChk"><label class="red">Enable log</label>
+        </p>
+        <p>
+            Store path:
+            <input type="text" id="PCFG_AnalogLogImageLocation">
+        </p>
+        <p>
+            Days to store logs:
+            <span class="number">
+              <span onclick="minus(this)" >-</span>
+              <input type="number" id="PCFG_AnalogLogfileRetentionInDays" step=1>
+              <span onclick="plus(this)" class="plus">+</span>
+            </span>
+        </p>
+    </section>
+</section>
+<section>
+    <h3>Save and Reboot</h3>
+    <p class="around">
+        <button class="red" id="PCFG_SaveBtn">Save**</button>
+    </p>
+</section>

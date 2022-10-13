@@ -1,0 +1,71 @@
+<h1>Edit analog template</h1>
+<section class="row trans">
+
+  <section>
+
+    <canvas id="PANcanvas"></canvas>
+    <p class="center">
+      <input type="checkbox" id="Category_Analog_enabled"><label class="red">Enable edit</label>
+      <input type="checkbox" id="PANpointer"><label>Pointer</label>
+      <input type="checkbox" id="PANgrid"><label>Grid</label>
+    </p>
+  </section>
+  <section>
+    <p>
+      x:
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input type="number" id="PANrefx" step=1>
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+      y:
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input type="number" id="PANrefy" step=1>
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p>
+      dx:
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input type="number" id="PANrefdx" step=1>
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+      dy:
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input type="number" id="PANrefdy" step=1>
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p class="center">
+     <input type="checkbox" id="PANlockAR"><label>Lock aspect ratio</label>
+    </p>
+  </section>
+  <section>
+    <h4>Number</h4>
+    <p class="center">
+      <select id="PANNumbers_value1"></select>
+      <button class="green" id="PANrenameNumber">Rename</button>
+      <button class="red" id="PANremoveNumber">Delete</button>
+      <button class="blue" id="PANnewNumber">New number</button>
+    </p>
+    <hr>
+    <h4>Analog</h4>
+    <p class="around">
+      <select id="PANindex"></select>
+      <button id="PANmoveNext">move Next</button>
+      <button id="PANmovePrevious">move Previous</button>
+    </p>
+    <p class="around">
+      <button class="green" id="PANrenameROI">Rename</button>
+      <button class="red" id="PANdeleteROI">Delete</button>
+      <button class="blue" id="PANnewROI">New ROI</button>
+    </p>
+    <hr>
+    <p class="around">
+      <button class="red" id="PANsaveroi">Save changes</button>
+    </p>
+  </section>
+</section>

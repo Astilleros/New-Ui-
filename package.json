@@ -1,0 +1,30 @@
+{
+  "name": "html",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bundled.js",
+  "scripts": {
+    "bundlePanels": "ts-node ./scripts/bundlePanels.ts ../src/index.html ../dist/bundled.html",
+    "minimifyHtml": "html-minifier-terser --collapse-whitespace --remove-comments --minify-js true -o ./dist/index.html ./dist/bundled.html && rm ./dist/bundled.html",
+    "minimifyHtmlDebug": "html-minifier-terser -o ./dist/index.html ./dist/bundled.html && rm ./dist/bundled.html",
+    "bundleJs": "npx esbuild ./src/js/index.js --bundle --outfile=./dist/app.js --minify",
+    "bundleJsDebug": "npx esbuild ./src/js/index.js --bundle --outfile=./dist/app.js",
+    "updateDevice": "ts-node ./scripts/updateDevice.ts ../dist/ http://192.168.1.136",
+    "debug": "npm run bundlePanels && npm run minimifyHtmlDebug && npm run bundleJsDebug && npm run updateDevice",
+    "build": "npm run bundlePanels && npm run minimifyHtml && npm run bundleJs && npm run updateDevice"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.0.0",
+    "esbuild": "^0.15.10",
+    "html-minifier-terser": "^7.0.0",
+    "node": "^18.10.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.8.2"
+  }
+}

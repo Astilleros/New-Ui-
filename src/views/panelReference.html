@@ -1,0 +1,111 @@
+<h1>Take image reference</h1>
+
+<section class="row trans">
+
+  <section>
+    
+    <canvas id="PRcanvas"></canvas>
+    <p class="center">
+      <input type="checkbox" id="PRpointer"><label>Pointer</label>
+      <input type="checkbox" id="PRgrid"><label>Grid</label>
+      <input type="checkbox" id="flipVer"><label>Flip Verticaly</label>
+      <input type="checkbox" id="flipHor"><label>Flip Horizontaly</label>
+    </p>
+  </section>
+  <section>
+    <h4>Align image</h4>
+    <p>
+      Pre-rotate Angle
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input id="prerotateangle" type="number" value="0" min="-360" max="360">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p>
+      Fine Alignment 
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input id="finerotate" type="number" value="0" min="-1" max="1" step="0.2">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <hr>
+    <h4>Calib camera *</h4>
+    <p>
+      LED Intensity* 
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input id="MakeImage_LEDIntensity_value1" type="number" value="0" min="0" max="100">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p>
+      Brightness* 
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input id="MakeImage_Brightness_value1" type="number" value="0" min="-2" max="2">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p>
+      Contrast* 
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input id="MakeImage_Contrast_value1" type="number" value="0" min="-2" max="2">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p>
+      Saturation* 
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input id="MakeImage_Saturation_value1" type="number" value="0" min="-2" max="2">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p class="center">
+      <button class="blue" id="showReferenceBtn">Reset changes</button>
+      <button class="green" id="doTakeBtn" type="submit" id="take">Capture</button>
+    </p>
+    <hr>
+    <p class="center">
+      <button class="red" id="saveReferenceBtn">Save</button>
+    </p>
+  </section>
+  <section>
+    <h4>Advanced **</h4>
+    <p>
+      Led wait (s)
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input id="MakeImage_WaitBeforeTakingPicture_value1" type="number" value="5" min="0" max="10">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p>
+      Image Quality
+      <span class="number">
+        <span onclick="minus(this)" >-</span>
+        <input id="MakeImage_ImageQuality_value1" type="number" value="12" min="0" max="63">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p class="center">
+      <input type="checkbox" id="MakeImage_FixedExposure_value1">
+      <label>Fixed exposure</label>
+    </p>
+    <p>
+      Image Size
+      <select id="MakeImage_ImageSize_value1">
+        <option value="VGA">VGA</option>
+        <option value="QVGA">QVGA</option>
+      </select>
+    </p>
+    <hr>
+    <p class="around">
+      <button class="red" id="saveReboot">Save & Reboot</button>
+    </p>
+  </section>
+  
+</section>
