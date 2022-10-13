@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html>
+<title>AIEdge</title>
+<head><style>:root {
+    --white: rgb(245, 245, 245);
+    --mingrey: rgb(110, 110, 110);
+    --grey: rgb(70, 70, 70);
+    --black: rgb(35, 35, 35);
+    --red: rgb(201, 0, 0);
+}
+
+iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none
+}
+
+/* Cleaned */
+* {
+    font-size: 18px;
+    margin: 0px;
+    padding: 0px;
+    background-color: var(--grey);
+    color: var(--white);
+    font-family: "Lucida Console", "Courier New", monospace;
+    box-sizing: border-box;
+}
+
+.view {
+    display: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    width: 100%;
+    padding: 0;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    padding: 30px 0;
+    font-size: 2.6em;
+    border: solid var(--mingrey);
+    border-width: 0 0 3px 0;
+}
+
+h2 {
+    padding: 25px 0;
+    font-size: 2.1em;
+    border: dotted var(--mingrey);
+    border-width: 0 0 2px 0;
+}
+
+h3 {
+    padding: 15px 0;
+    font-size: 1.7em;
+    border: solid var(--mingrey);
+    border-width: 0 0 1px 0;
+}
+
+h4 {
+    padding: 10px 0;
+    font-size: 1.3em;
+    border: dotted var(--mingrey);
+    border-width: 0 0 1px 0;
+}
+
+
+.panel {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+section {
+    width: fit-content;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: var(--white);
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+section.trans {
+    background-color: transparent;
+}
+
+section.trans section {
+    margin: 10px;
+}
+
+section * {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+section p {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+}
+
+
+section p.rigth {
+    justify-content: right;
+    align-items: right;
+}
+
+section p.center {
+    justify-content: center;
+    align-items: center;
+}
+
+section p.left {
+    justify-content: left;
+    align-items: left;
+}
+
+section p.around {
+    justify-content: space-around;
+}
+
+
+section.nav a {
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--black);
+}
+
+section.nav ul {
+    list-style: none;
+}
+
+section.nav ul li {
+    margin: 10px;
+
+}
+
+section.nav ul li a {
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--black);
+    text-decoration: underline;
+}
+
+
+/** TABLE */
+table {
+    margin: 20px;
+    border: solid 1px var(--mingrey);
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table thead tr th {
+    background-color: var(--black);
+    border: solid 1px var(--grey);
+    color: var(--white);
+    padding: 10px;
+}
+
+table tbody tr:hover {
+    background-color: var(--grey);
+    color: var(--white);
+}
+
+table tbody tr td {
+    border: solid 1px var(--mingrey);
+    padding: 10px 20px;
+}
+
+table tbody tr td:hover {
+    cursor: pointer;
+    background-color: var(--red);
+    color: var(--white);
+}
+
+
+
+input[type="file"]::file-selector-button {
+    display: none
+}
+input[type="file"] {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+/** NAV */
+.navbar {
+    list-style: none;
+    background-color: rgb(34, 34, 34);
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar * {
+    background-color: transparent;
+}
+
+.navbar li {
+    background-color: rgb(34, 34, 34);
+    padding: 10px 15px;
+    display: block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar li div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar li div * {
+    padding: 5px;
+}
+
+.navbar li:hover {
+    background-color: red;
+}
+
+.navbar li ul {
+    display: none;
+}
+
+.navbar li ul li a {
+    float: none;
+    padding: 15px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+
+.navbar li:hover ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+
+
+
+/** SPINNER */
+.panelSpinner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.spinner {
+    border: 8px solid rgb(204, 204, 204);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border-left-color: rgb(255, 0, 0);
+
+    animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* BUTTONS */
+button {
+    min-width: 100px;
+    padding: 7px 13px;
+    margin: 5px 10px;
+    border: 1px dashed rgb(51, 51, 51);
+    color: white;
+    background-color: rgb(51, 51, 51);
+    border-radius: 0.3rem;
+    cursor: pointer;
+
+}
+
+button:hover {
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    background-color: transparent;
+    color: rgb(51, 51, 51);
+}
+
+button.red {
+    border: 1px dashed rgb(255, 55, 55);
+    background-color: rgb(255, 55, 55);
+}
+
+button.red:hover {
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    background-color: transparent;
+    color: rgb(255, 55, 55);
+}
+
+button.blue {
+    border: 1px dashed rgb(86, 131, 255);
+    background-color: rgb(86, 131, 255);
+}
+
+button.blue:hover {
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    background-color: transparent;
+    color: rgb(86, 131, 255);
+}
+
+button.green {
+    border: 1px dashed rgb(55, 202, 50);
+    background-color: rgb(55, 202, 50);
+}
+
+button.green:hover {
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    background-color: transparent;
+    color: rgb(55, 202, 50);
+}
+
+button.orange {
+    border: 1px dashed tomato;
+    background-color: tomato;
+}
+
+button.orange:hover {
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    background-color: transparent;
+    color: tomato;
+}
+
+hr {
+    width: 100%;
+    height: 3px;
+    background-color: var(var(--grey));
+    margin: 5px 0px;
+    border-width: 0;
+    color: var(var(--grey));
+    background-color: gray
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* INPUTS */
+input {
+    cursor: pointer;
+    margin: 5px 10px;
+}
+
+input[type="text"] {
+    box-shadow: inset #abacaf 0 0 0 2px;
+    border: 0;
+    appearance: none;
+    min-width: 400px;
+    position: relative;
+    border-radius: 3px;
+    height: 40px;
+    transition: all .2s ease;
+
+}
+
+input[type="text"]:hover {
+    box-shadow: 0 0 0 0 #fff inset, #1de9b6 0 0 0 2px;
+}
+
+input[type="text"]:focus {
+    background: #fff;
+    outline: 0;
+    box-shadow: 0 0 0 0 #fff inset, #1de9b6 0 0 0 3px;
+}
+
+/* CHECKBOX */
+input[type="checkbox"] {
+    margin: 10px;
+    display: inline-block;
+    transform: scale(2);
+    margin-right: 5px;
+}
+
+input[type="checkbox"]+label {
+    cursor: pointer;
+    display: inline-block;
+    padding: 7px 13px;
+}
+
+
+/* SELECTS */
+select {
+    cursor: pointer;
+    /* styling */
+    background-color: white;
+    border: 2px solid rgb(51, 51, 51);
+    border-radius: 0.3rem;
+    display: inline-block;
+    padding: 0.5em 3.5em 0.5em 1em;
+
+    /* reset */
+    margin: 1px;
+    box-sizing: border-box;
+    -moz-appearance: none;
+    /* Firefox */
+    -webkit-appearance: none;
+    /* Safari and Chrome */
+    appearance: none;
+
+    background-image:
+        linear-gradient(45deg, transparent 50%, white 50%),
+        linear-gradient(135deg, white 50%, transparent 50%),
+        linear-gradient(to right, rgb(51, 51, 51), rgb(51, 51, 51));
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        100% 0;
+    background-size:
+        5px 5px,
+        5px 5px,
+        2.5em 2.5em;
+    background-repeat: no-repeat;
+}
+
+select:focus {
+    background-image:
+        linear-gradient(45deg, white 50%, transparent 50%),
+        linear-gradient(135deg, transparent 50%, white 50%),
+        linear-gradient(to right, rgb(51, 51, 51), rgb(51, 51, 51));
+    background-position:
+        calc(100% - 15px) 1em,
+        calc(100% - 20px) 1em,
+        100% 0;
+}
+
+
+/* NUMBERS */
+input[type="number"] {
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.number {
+    background-color: var(--white);
+    border: 1px dashed var(--grey);
+    border-radius: 0.3rem;
+    margin: 2px 10px 2px 4px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.number span {
+    width: fit-content;
+    margin: 2px;
+    padding: 6px;
+    background-color: var(--grey);
+    font-size: 20px;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    color: white;
+}
+
+.number input[type=number] {
+    background-color: var(--white);
+    max-width: 3rem;
+    border: 0;
+    font-weight: bold;
+    text-align: center;
+    color: var(--black);
+}
+
+
+
+/** DOC & FAQ & INFO*/
+
+
+
+
+.fixedUpNav {
+    position: fixed;
+    /* Fixed/sticky position */
+    bottom: 20px;
+    /* Place the button at the bottom of the page */
+    right: 30px;
+    /* Place the button 30px from the right */
+    z-index: 99;
+    /* Make sure it does not overlap */
+    border: none;
+    /* Remove borders */
+    outline: none;
+    /* Remove outline */
+    background-color: var(--white);
+    color: var(--black);
+    /* Text color */
+    cursor: pointer;
+    /* Add a mouse pointer on hover */
+    padding: 15px;
+    /* Some padding */
+    border-radius: 50%;
+    /* Rounded corners */
+    font-size: 18px;
+    /* Increase font size */
+}
+
+
+/** PANEL REBOOT*/
+#PRBO_counter, #PRBO_fastreboot, #PRBO_cancelreboot {
+    background-color: transparent;
+    color: red;
+    font-size: 300px;
+    margin: 30px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#PRBO_fastreboot {
+    color: red;
+    font-weight: bold;
+    font-size: 40px;
+    border: 3px solid red;
+    border-color: red;
+}
+
+#PRBO_fastreboot:hover {
+    background-color: red;
+    color: white;
+}
+
+#PRBO_cancelreboot {
+    background-color: rgb(0, 255, 42);
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    border: 3px solid rgb(0, 255, 42);
+    border-color: rgb(0, 255, 42);
+}
+
+/** FILESERVER NAVBAR*/
+#FS_navBar {
+    display: inline;
+}
+#FS_navBar li {
+    text-decoration: none;
+    text-decoration: underline;
+    cursor: pointer;
+    display: inline;
+    background-color: var(--black);
+    color: var(--white);
+    width: fit-content;
+    min-width: 40px;
+    padding: 10px 15px;
+    margin: 5px 5px;
+}
+
+#PRBO_spinner{
+    background-color: transparent;
+}</style>
+
+
+  <script type="text/javascript">
+    function disableElements(input_list){
+      input_list.forEach((el => el.disabled = true))
+    }
+
+    function enableElements(input_list){
+      input_list.forEach((el => el.disabled = false))
+    }
+
+    function hideElements(input_list){
+      input_list.forEach((el => el.style.display = 'none'))
+    }
+
+    function showElements(input_list){
+      input_list.forEach((el => el.style.display = 'flex'))
+    }
+
+    function plus(e){
+      let parent = e.parentNode.querySelector('input[type=number]')
+      if(parent.disabled == true) return
+      parent.stepUp()
+      let evt = document.createEvent("HTMLEvents");
+      evt.initEvent("change", false, true);
+      parent.dispatchEvent(evt);
+    }
+    function minus(e){
+      let parent = e.parentNode.querySelector('input[type=number]')
+      if(parent.disabled == true) return
+      parent.stepDown()
+      let evt = document.createEvent("HTMLEvents");
+      evt.initEvent("change", false, true);
+      parent.dispatchEvent(evt);
+    }
+  </script>
+</head>
+<body>
+  <script type="module" src="./app.js"></script>
+  <ul class="navbar">
+    <li id="panelHomeBtn">
+      <div>
+        <svg version="1.1" class="has-solid" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" role="img" width="40" height="40" fill="#eeeeec"><path class="clr-i-outline clr-i-outline-path-1" d="M33.71,17.29l-15-15a1,1,0,0,0-1.41,0l-15,15a1,1,0,0,0,1.41,1.41L18,4.41,32.29,18.71a1,1,0,0,0,1.41-1.41Z"/><path class="clr-i-outline clr-i-outline-path-2" d="M28,32h-5V22H13V32H8V18L6,20V32a2,2,0,0,0,2,2h7V24h6V34h7a2,2,0,0,0,2-2V19.76l-2-2Z"/><path class="clr-i-solid clr-i-solid-path-1" d="M33,19a1,1,0,0,1-.71-.29L18,4.41,3.71,18.71a1,1,0,0,1-1.41-1.41l15-15a1,1,0,0,1,1.41,0l15,15A1,1,0,0,1,33,19Z" style="display:none"/><path class="clr-i-solid clr-i-solid-path-2" d="M18,7.79,6,19.83V32a2,2,0,0,0,2,2h7V24h6V34h7a2,2,0,0,0,2-2V19.76Z" style="display:none"/></svg>
+        AIEdge
+      </div>
+    </li>
+
+    <li>
+      <div>
+        <svg version="1.1" class="has-solid" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" role="img" width="40" height="40" fill="#eeeeec"><path d="M32,8H24.7L23.64,5.28A2,2,0,0,0,21.78,4H14.22a2,2,0,0,0-1.87,1.28L11.3,8H4a2,2,0,0,0-2,2V30a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V10A2,2,0,0,0,32,8Zm0,22H4V10h8.67l1.55-4h7.56l1.55,4H32Z" class="clr-i-outline clr-i-outline-path-1"/><path d="M9,19a9,9,0,1,0,9-9A9,9,0,0,0,9,19Zm16.4,0A7.4,7.4,0,1,1,18,11.6,7.41,7.41,0,0,1,25.4,19Z" class="clr-i-outline clr-i-outline-path-2"/><path d="M9.37,12.83a.8.8,0,0,0-.8-.8H6.17a.8.8,0,0,0,0,1.6h2.4A.8.8,0,0,0,9.37,12.83Z" class="clr-i-outline clr-i-outline-path-3"/><path d="M12.34,19a5.57,5.57,0,0,0,3.24,5l.85-1.37a4,4,0,1,1,4.11-6.61l.86-1.38A5.56,5.56,0,0,0,12.34,19Z" class="clr-i-outline clr-i-outline-path-4"/><path d="M32,8H24.7L23.64,5.28A2,2,0,0,0,21.78,4H14.22a2,2,0,0,0-1.87,1.28L11.3,8H4a2,2,0,0,0-2,2V30a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V10A2,2,0,0,0,32,8ZM6.17,13.63a.8.8,0,0,1,0-1.6h2.4a.8.8,0,0,1,0,1.6ZM18,28a9,9,0,1,1,9-9A9,9,0,0,1,18,28Z" class="clr-i-solid clr-i-solid-path-1" style="display:none"/><path d="M11.11,19.06a7.07,7.07,0,0,0,4.11,6.41l1.09-1.74a5,5,0,1,1,5.22-8.39l1.09-1.76a7.06,7.06,0,0,0-11.51,5.48Z" class="clr-i-solid clr-i-solid-path-2" style="display:none"/></svg>
+        <span>Image</span>
+      </div>
+
+      <ul>
+        <li><a href="#" id="panelReferenceBtn">Take reference</a></li>
+        <li><a href="#" id="panelAlignmentBtn">Alignment marks</a></li>
+        <li><a href="#" id="panelDigitsBtn">Digits template</a></li>
+        <li><a href="#" id="panelAnalogsBtn">Analogs template</a></li>
+      </ul>
+    </li>
+
+
+    <li>
+      <div>
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" role="img" width="40" height="40" fill="#eeeeec"><path d="M33.53,21.58l-4.94-2.83V13.09a1,1,0,0,0-.51-.87L22.64,9.1a1,1,0,0,0-1,0L16.2,12.22a1,1,0,0,0-.51.87v5.66l-4.94,2.83a1,1,0,0,0-.5.87v6.24a1,1,0,0,0,.5.86l5.45,3.12a1,1,0,0,0,1,0l4.95-2.83,4.95,2.83a1,1,0,0,0,.5.14,1,1,0,0,0,.49-.14l5.45-3.12a1,1,0,0,0,.5-.86V22.45A1,1,0,0,0,33.53,21.58ZM22.14,11.12l4.45,2.55V19l-4.46,2.56-4.44-2.6V13.67ZM16.69,30.65l-4.44-2.54V23l4.68-2.68,4.4,2.57V28ZM32,28.11l-4.44,2.54L22.93,28V22.93l4.46-2.57L32,23Z" class="clr-i-outline clr-i-outline-path-1"/><path d="M7,27.43a1,1,0,0,1-1-1V19.9A1,1,0,0,1,6.5,19l4.95-2.83V10.54a1,1,0,0,1,.5-.87l5.21-3a1,1,0,0,1,1.37.37,1,1,0,0,1-.38,1.37l-4.7,2.68v5.66a1,1,0,0,1-.51.87L8,20.48v5.95A1,1,0,0,1,7,27.43Z" class="clr-i-outline clr-i-outline-path-2"/><path d="M3,25.05a1,1,0,0,1-1-1V17.53a1,1,0,0,1,.5-.86l5-2.84V8.17A1,1,0,0,1,8,7.31l5.25-3a1,1,0,0,1,1,1.74L9.45,8.75v5.66a1,1,0,0,1-.51.87L4,18.11v5.94A1,1,0,0,1,3,25.05Z" class="clr-i-outline clr-i-outline-path-3"/></svg>
+        <span>Recognition</span>
+      </div>
+      <ul>
+        <li><a href="#" id="panelCNNBtn">CNN models</a></li>
+        <li><a href="#" id="panelPostprocessingBtn">Postprocessing</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <div>
+        <svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" role="img" width="40" height="40" fill="#eeeeec"><path d="M26.54,20.82a.88.88,0,0,0-.88-.88H20.75l1.1-1.1A.88.88,0,0,0,20.6,17.6l-3.21,3.22L20.6,24a.88.88,0,1,0,1.25-1.24L20.76,21.7h4.9A.88.88,0,0,0,26.54,20.82Z" class="clr-i-outline clr-i-outline-path-1"/><path d="M29.27,21.7a.88.88,0,1,0,0-1.76h-.58a.88.88,0,1,0,0,1.76Z" class="clr-i-outline clr-i-outline-path-2"/><path d="M32.21,20h-.06a.85.85,0,0,0-.85.88.91.91,0,0,0,.91.88.88.88,0,1,0,0-1.76Z" class="clr-i-outline clr-i-outline-path-3"/><path d="M32.59,11a.88.88,0,0,0-1.25,1.24l1.1,1.1H27.53a.88.88,0,1,0,0,1.76h4.9l-1.09,1.09a.88.88,0,0,0,1.25,1.24l3.21-3.22Z" class="clr-i-outline clr-i-outline-path-4"/><path d="M24.5,15.07a.88.88,0,1,0,0-1.76h-.58a.88.88,0,1,0,0,1.76Z" class="clr-i-outline clr-i-outline-path-5"/><path d="M21.9,14.27a.85.85,0,0,0-.85-.88H21a.88.88,0,1,0,0,1.76A.91.91,0,0,0,21.9,14.27Z" class="clr-i-outline clr-i-outline-path-6"/><path d="M30.36,23.65c0,.13,0,.26,0,.39a3.77,3.77,0,0,1-3.62,3.89H7.28a5.32,5.32,0,0,1-5.13-5.48A5.32,5.32,0,0,1,7.28,17H8.91L9,16.12a8.92,8.92,0,0,1,8.62-8h.08a8.49,8.49,0,0,1,6.56,3.29h2.37a10.55,10.55,0,0,0-8.91-5.25h-.11A10.82,10.82,0,0,0,7.22,15a7.28,7.28,0,0,0-7,7.43,7.27,7.27,0,0,0,7.08,7.43H26.77A5.72,5.72,0,0,0,32.35,24a3.77,3.77,0,0,0,0-.39Z" class="clr-i-outline clr-i-outline-path-7"/></svg>
+        <span>Results</span>
+      </div>
+      <ul>
+        <li><a href="#" id="panelMQTTBtn">MQTT</a></li>
+        <li><a href="#" id="panelInfluxDBBtn">InfluxDB</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <div>
+        <svg version="1.1" class="can-badge can-alert has-solid" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" role="img" width="40" height="40" fill="#eeeeec"><path class="clr-i-outline clr-i-outline-path-1" d="M18.1,11c-3.9,0-7,3.1-7,7s3.1,7,7,7c3.9,0,7-3.1,7-7S22,11,18.1,11z M18.1,23c-2.8,0-5-2.2-5-5s2.2-5,5-5c2.8,0,5,2.2,5,5S20.9,23,18.1,23z"/><path class="clr-i-outline clr-i-outline-path-2" d="M32.8,14.7L30,13.8l-0.6-1.5l1.4-2.6c0.3-0.6,0.2-1.4-0.3-1.9l-2.4-2.4c-0.5-0.5-1.3-0.6-1.9-0.3l-2.6,1.4l-1.5-0.6l-0.9-2.8C21,2.5,20.4,2,19.7,2h-3.4c-0.7,0-1.3,0.5-1.4,1.2L14,6c-0.6,0.1-1.1,0.3-1.6,0.6L9.8,5.2C9.2,4.9,8.4,5,7.9,5.5L5.5,7.9C5,8.4,4.9,9.2,5.2,9.8l1.3,2.5c-0.2,0.5-0.4,1.1-0.6,1.6l-2.8,0.9C2.5,15,2,15.6,2,16.3v3.4c0,0.7,0.5,1.3,1.2,1.5L6,22.1l0.6,1.5l-1.4,2.6c-0.3,0.6-0.2,1.4,0.3,1.9l2.4,2.4c0.5,0.5,1.3,0.6,1.9,0.3l2.6-1.4l1.5,0.6l0.9,2.9c0.2,0.6,0.8,1.1,1.5,1.1h3.4c0.7,0,1.3-0.5,1.5-1.1l0.9-2.9l1.5-0.6l2.6,1.4c0.6,0.3,1.4,0.2,1.9-0.3l2.4-2.4c0.5-0.5,0.6-1.3,0.3-1.9l-1.4-2.6l0.6-1.5l2.9-0.9c0.6-0.2,1.1-0.8,1.1-1.5v-3.4C34,15.6,33.5,14.9,32.8,14.7z M32,19.4l-3.6,1.1L28.3,21c-0.3,0.7-0.6,1.4-0.9,2.1l-0.3,0.5l1.8,3.3l-2,2l-3.3-1.8l-0.5,0.3c-0.7,0.4-1.4,0.7-2.1,0.9l-0.5,0.1L19.4,32h-2.8l-1.1-3.6L15,28.3c-0.7-0.3-1.4-0.6-2.1-0.9l-0.5-0.3l-3.3,1.8l-2-2l1.8-3.3l-0.3-0.5c-0.4-0.7-0.7-1.4-0.9-2.1l-0.1-0.5L4,19.4v-2.8l3.4-1l0.2-0.5c0.2-0.8,0.5-1.5,0.9-2.2l0.3-0.5L7.1,9.1l2-2l3.2,1.8l0.5-0.3c0.7-0.4,1.4-0.7,2.2-0.9l0.5-0.2L16.6,4h2.8l1.1,3.5L21,7.7c0.7,0.2,1.4,0.5,2.1,0.9l0.5,0.3l3.3-1.8l2,2l-1.8,3.3l0.3,0.5c0.4,0.7,0.7,1.4,0.9,2.1l0.1,0.5l3.6,1.1V19.4z"/><path class="clr-i-outline--badged clr-i-outline-path-1--badged" d="M11.1,18c0,3.9,3.1,7,7,7c3.9,0,7-3.1,7-7s-3.1-7-7-7C14.2,11,11.1,14.1,11.1,18z M23.1,18c0,2.8-2.2,5-5,5c-2.8,0-5-2.2-5-5s2.2-5,5-5C20.9,13,23.1,15.2,23.1,18z" style="display:none"/><path class="clr-i-outline--badged clr-i-outline-path-2--badged" d="M32.8,14.7L30,13.8l-0.1-0.3c-0.8,0-1.6-0.2-2.4-0.4c0.3,0.6,0.6,1.3,0.8,1.9l0.1,0.5l3.6,1.1v2.8l-3.6,1.1L28.3,21c-0.3,0.7-0.6,1.4-0.9,2.1l-0.3,0.5l1.8,3.3l-2,2l-3.3-1.8l-0.5,0.3c-0.7,0.4-1.4,0.7-2.1,0.9l-0.5,0.1L19.4,32h-2.8l-1.1-3.6L15,28.3c-0.7-0.3-1.4-0.6-2.1-0.9l-0.5-0.3l-3.3,1.8l-2-2l1.8-3.3l-0.3-0.5c-0.4-0.7-0.7-1.4-0.9-2.1l-0.1-0.5L4,19.4v-2.8l3.4-1l0.2-0.5c0.2-0.8,0.5-1.5,0.9-2.2l0.3-0.5L7.1,9.1l2-2l3.2,1.8l0.5-0.3c0.7-0.4,1.4-0.7,2.2-0.9l0.5-0.2L16.6,4h2.8l1.1,3.5L21,7.7c0.7,0.2,1.3,0.5,1.9,0.8c-0.3-0.8-0.4-1.6-0.4-2.5l-0.4-0.2l-0.9-2.8C21,2.5,20.4,2,19.7,2h-3.4c-0.7,0-1.3,0.5-1.4,1.2L14,6c-0.6,0.1-1.1,0.3-1.6,0.6L9.8,5.2C9.2,4.9,8.4,5,7.9,5.5L5.5,7.9C5,8.4,4.9,9.2,5.2,9.8l1.3,2.5c-0.2,0.5-0.4,1.1-0.6,1.6l-2.8,0.9C2.5,15,2,15.6,2,16.3v3.4c0,0.7,0.5,1.3,1.2,1.5L6,22.1l0.6,1.5l-1.4,2.6c-0.3,0.6-0.2,1.4,0.3,1.9l2.4,2.4c0.5,0.5,1.3,0.6,1.9,0.3l2.6-1.4l1.5,0.6l0.9,2.9c0.2,0.6,0.8,1.1,1.5,1.1h3.4c0.7,0,1.3-0.5,1.5-1.1l0.9-2.9l1.5-0.6l2.6,1.4c0.6,0.3,1.4,0.2,1.9-0.3l2.4-2.4c0.5-0.5,0.6-1.3,0.3-1.9l-1.4-2.6l0.6-1.5l2.9-0.9c0.6-0.2,1.1-0.8,1.1-1.5v-3.4C34,15.6,33.5,14.9,32.8,14.7z" style="display:none"/><path class="clr-i-outline--alerted clr-i-outline-path-1--alerted" d="M33.7,15.4h-5.3v0.1l3.6,1.1v2.8l-3.6,1.1L28.3,21c-0.3,0.7-0.6,1.4-0.9,2.1l-0.3,0.5l1.8,3.3l-2,2l-3.3-1.8l-0.5,0.3c-0.7,0.4-1.4,0.7-2.1,0.9l-0.5,0.1L19.4,32h-2.8l-1.1-3.6L15,28.3c-0.7-0.3-1.4-0.6-2.1-0.9l-0.5-0.3l-3.3,1.8l-2-2l1.8-3.3l-0.3-0.5c-0.4-0.7-0.7-1.4-0.9-2.1l-0.1-0.5L4,19.4v-2.8l3.4-1l0.2-0.5c0.2-0.8,0.5-1.5,0.9-2.2l0.3-0.5L7.1,9.1l2-2l3.2,1.8l0.5-0.3c0.7-0.4,1.4-0.7,2.2-0.9l0.5-0.2L16.6,4h2.8l1.1,3.4l1.4-2.3l-0.6-2C21,2.4,20.4,2,19.7,2h-3.4c-0.7,0-1.3,0.5-1.4,1.2L14,6c-0.6,0.1-1.1,0.3-1.6,0.6L9.8,5.2C9.2,4.9,8.4,5,7.9,5.5L5.5,7.9C5,8.4,4.9,9.2,5.2,9.8l1.3,2.5c-0.2,0.5-0.4,1.1-0.6,1.6l-2.8,0.9C2.5,15,2,15.6,2,16.3v3.4c0,0.7,0.5,1.3,1.2,1.5L6,22.1l0.6,1.5l-1.4,2.6c-0.3,0.6-0.2,1.4,0.3,1.9l2.4,2.4c0.5,0.5,1.3,0.6,1.9,0.3l2.6-1.4l1.5,0.6l0.9,2.9c0.2,0.6,0.8,1.1,1.5,1.1h3.4c0.7,0,1.3-0.5,1.5-1.1l0.9-2.9l1.5-0.6l2.6,1.4c0.6,0.3,1.4,0.2,1.9-0.3l2.4-2.4c0.5-0.5,0.6-1.3,0.3-1.9l-1.4-2.6l0.6-1.5l2.9-0.9c0.6-0.2,1.1-0.8,1.1-1.5v-3.4C34,16,33.9,15.7,33.7,15.4z" style="display:none"/><path class="clr-i-outline--alerted clr-i-outline-path-2--alerted" d="M18.1,23c-2.8,0-5-2.2-5-5s2.2-5,5-5c0.2,0,0.5,0,0.7,0.1c-0.2-0.6-0.3-1.3-0.2-2h-0.5c-3.9,0-7,3.1-7,7c0,3.9,3.1,7,7,7c3.9,0,7-3.1,7-7c0-0.9-0.2-1.8-0.5-2.6h-2.2c0.5,0.8,0.7,1.6,0.7,2.5C23.1,20.8,20.9,23,18.1,23z" style="display:none"/><path class="clr-i-outline--alerted clr-i-outline-path-3--alerted clr-i-alert" d="M26.9,1.1L21.1,11c-0.4,0.6-0.2,1.4,0.3,1.8c0.2,0.2,0.5,0.2,0.8,0.2h11.5c0.7,0,1.3-0.5,1.3-1.2c0-0.3-0.1-0.5-0.2-0.8l-5.7-9.9c-0.4-0.6-1.1-0.8-1.8-0.5C27.1,0.8,27,1,26.9,1.1z" style="display:none"/><path class="clr-i-solid clr-i-solid-path-1" d="M32.57,15.72l-3.35-1a11.65,11.65,0,0,0-.95-2.33l1.64-3.07a.61.61,0,0,0-.11-.72L27.41,6.2a.61.61,0,0,0-.72-.11L23.64,7.72a11.62,11.62,0,0,0-2.36-1l-1-3.31A.61.61,0,0,0,19.69,3H16.31a.61.61,0,0,0-.58.43l-1,3.3a11.63,11.63,0,0,0-2.38,1l-3-1.62a.61.61,0,0,0-.72.11L6.2,8.59a.61.61,0,0,0-.11.72l1.62,3a11.63,11.63,0,0,0-1,2.37l-3.31,1a.61.61,0,0,0-.43.58v3.38a.61.61,0,0,0,.43.58l3.33,1a11.62,11.62,0,0,0,1,2.33L6.09,26.69a.61.61,0,0,0,.11.72L8.59,29.8a.61.61,0,0,0,.72.11l3.09-1.65a11.65,11.65,0,0,0,2.3.94l1,3.37a.61.61,0,0,0,.58.43h3.38a.61.61,0,0,0,.58-.43l1-3.38a11.63,11.63,0,0,0,2.28-.94l3.11,1.66a.61.61,0,0,0,.72-.11l2.39-2.39a.61.61,0,0,0,.11-.72l-1.66-3.1a11.63,11.63,0,0,0,.95-2.29l3.37-1a.61.61,0,0,0,.43-.58V16.31A.61.61,0,0,0,32.57,15.72ZM18,23.5A5.5,5.5,0,1,1,23.5,18,5.5,5.5,0,0,1,18,23.5Z" style="display:none"/><path class="clr-i-solid--badged clr-i-solid-path-1--badged" d="M32.57,15.72l-3.35-1a12.12,12.12,0,0,0-.47-1.32,7.49,7.49,0,0,1-6.14-6.16,11.82,11.82,0,0,0-1.33-.48l-1-3.31A.61.61,0,0,0,19.69,3H16.31a.61.61,0,0,0-.58.43l-1,3.3a11.63,11.63,0,0,0-2.38,1l-3-1.62a.61.61,0,0,0-.72.11L6.2,8.59a.61.61,0,0,0-.11.72l1.62,3a11.63,11.63,0,0,0-1,2.37l-3.31,1a.61.61,0,0,0-.43.58v3.38a.61.61,0,0,0,.43.58l3.33,1a11.62,11.62,0,0,0,1,2.33L6.09,26.69a.61.61,0,0,0,.11.72L8.59,29.8a.61.61,0,0,0,.72.11l3.09-1.65a11.65,11.65,0,0,0,2.3.94l1,3.37a.61.61,0,0,0,.58.43h3.38a.61.61,0,0,0,.58-.43l1-3.38a11.63,11.63,0,0,0,2.28-.94l3.11,1.66a.61.61,0,0,0,.72-.11l2.39-2.39a.61.61,0,0,0,.11-.72l-1.66-3.1a11.63,11.63,0,0,0,.95-2.29l3.37-1a.61.61,0,0,0,.43-.58V16.31A.61.61,0,0,0,32.57,15.72ZM18,23.5A5.5,5.5,0,1,1,23.5,18,5.5,5.5,0,0,1,18,23.5Z" style="display:none"/><path class="clr-i-solid--alerted clr-i-solid-path-1--alerted" d="M32.57,15.72,31.5,15.4H22.85A5.5,5.5,0,1,1,18,12.5a5.53,5.53,0,0,1,.65,0A3.68,3.68,0,0,1,19,9.89l2.09-3.62-.86-2.83A.61.61,0,0,0,19.69,3H16.31a.61.61,0,0,0-.58.43l-1,3.3a11.63,11.63,0,0,0-2.38,1l-3-1.62a.61.61,0,0,0-.72.11L6.2,8.59a.61.61,0,0,0-.11.72l1.62,3a11.63,11.63,0,0,0-1,2.37l-3.31,1a.61.61,0,0,0-.43.58v3.38a.61.61,0,0,0,.43.58l3.33,1a11.62,11.62,0,0,0,1,2.33L6.09,26.69a.61.61,0,0,0,.11.72L8.59,29.8a.61.61,0,0,0,.72.11l3.09-1.65a11.65,11.65,0,0,0,2.3.94l1,3.37a.61.61,0,0,0,.58.43h3.38a.61.61,0,0,0,.58-.43l1-3.38a11.63,11.63,0,0,0,2.28-.94l3.11,1.66a.61.61,0,0,0,.72-.11l2.39-2.39a.61.61,0,0,0,.11-.72l-1.66-3.1a11.63,11.63,0,0,0,.95-2.29l3.37-1a.61.61,0,0,0,.43-.58V16.31A.61.61,0,0,0,32.57,15.72Z" style="display:none"/><path class="clr-i-solid--alerted clr-i-solid-path-2--alerted clr-i-alert" d="M26.85,1.14,21.13,11A1.28,1.28,0,0,0,22.23,13H33.68A1.28,1.28,0,0,0,34.78,11L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z" style="display:none"/><circle class="clr-i-outline--badged clr-i-outline-path-3--badged clr-i-badge" cx="30" cy="6" r="5" style="display:none"/><circle class="clr-i-solid--badged clr-i-solid-path-2--badged clr-i-badge" cx="30" cy="6" r="5" style="display:none"/></svg>
+        <span>System</span>
+      </div>
+
+      <ul>
+        <li><a href="#" id="help">Help?</a></li>
+        <li><a href="#" id="scheduleBtn">Schedule&Log</a></li>
+        <li><a href="#" id="panelConfigBtn">RAW config.ini</a></li>
+        <li><a href="#" id="panelOTABtn">OTA</a></li>
+        <li><a href="#" id="panelFileServerBtn">File server</a></li>
+        <li><a href="#" id="reboot">Reboot</a></li>
+      </ul>
+    </li>
+    <li>
+      <div>
+        <span id="statusFlowNavBar"></span>
+      </div>
+    </li>
+
+  </ul>
+  <div class="panelSpinner" id="panelSpinner">
+    <div class="spinner"></div>
+  </div>
+  <div class="panel view" id="panelHome" style="display: none;"><h1>Home watermeter</h1>
+<section class="trans">
+    <section>
+        <p>Last update: <span id="timestamp">2022-19-12T12:11:22</span></p>
+        <p>Flow Status: <span id="statusflow">Flow finished (19:53:48)</span></p>
+    </section>
+    <section>
+        <img id="image" src="">
+    </section>
+    <section class="row trans" id="panelul">
+    </section>
+            
+</section></div>
+  <div class="panel view" id="panelReference" style="display: none;"><h1>Take image reference</h1>
+
+<section class="row trans">
+
+  <section>
+    
+    <canvas id="PRcanvas"></canvas>
+    <p class="center">
+      <input type="checkbox" id="PRpointer"><label>Pointer</label>
+      <input type="checkbox" id="PRgrid"><label>Grid</label>
+      <input type="checkbox" id="flipVer"><label>Flip Verticaly</label>
+      <input type="checkbox" id="flipHor"><label>Flip Horizontaly</label>
+    </p>
+  </section>
+  <section>
+    <h4>Align image</h4>
+    <p>
+      Pre-rotate Angle
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input id="prerotateangle" type="number" value="0" min="-360" max="360">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p>
+      Fine Alignment 
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input id="finerotate" type="number" value="0" min="-1" max="1" step="0.2">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <hr>
+    <h4>Calib camera *</h4>
+    <p>
+      LED Intensity* 
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input id="MakeImage_LEDIntensity_value1" type="number" value="0" min="0" max="100">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p>
+      Brightness* 
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input id="MakeImage_Brightness_value1" type="number" value="0" min="-2" max="2">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p>
+      Contrast* 
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input id="MakeImage_Contrast_value1" type="number" value="0" min="-2" max="2">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p>
+      Saturation* 
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input id="MakeImage_Saturation_value1" type="number" value="0" min="-2" max="2">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p class="center">
+      <button class="blue" id="showReferenceBtn">Reset changes</button>
+      <button class="green" id="doTakeBtn" type="submit" id="take">Capture</button>
+    </p>
+    <hr>
+    <p class="center">
+      <button class="red" id="saveReferenceBtn">Save</button>
+    </p>
+  </section>
+  <section>
+    <h4>Advanced **</h4>
+    <p>
+      Led wait (s)
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input id="MakeImage_WaitBeforeTakingPicture_value1" type="number" value="5" min="0" max="10">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p>
+      Image Quality
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input id="MakeImage_ImageQuality_value1" type="number" value="12" min="0" max="63">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p class="center">
+      <input type="checkbox" id="MakeImage_FixedExposure_value1">
+      <label>Fixed exposure</label>
+    </p>
+    <p>
+      Image Size
+      <select id="MakeImage_ImageSize_value1">
+        <option value="VGA">VGA</option>
+        <option value="QVGA">QVGA</option>
+      </select>
+    </p>
+    <hr>
+    <p class="around">
+      <button class="red" id="saveReboot">Save & Reboot</button>
+    </p>
+  </section>
+  
+</section></div>
+  <div class="panel view" id="panelAlignment" style="display: none;"><h1>Define Alignment References</h1>
+
+<section class="row trans">
+
+  <section>
+    <canvas id="PAcanvas"></canvas>
+    <p class="center">
+      <input class="w3-check" type="checkbox" id="PApointer"><label>Pointer</label>
+      <input class="w3-check" type="checkbox" id="PAgrid"><label>Grid</label>
+    </p>
+  </section>
+
+  <section>
+    <h4>References</h4>
+    <p class="around">
+      <select id="index" name="reference">
+        <option value="0" selected="selected">Reference 0</option>
+        <option value="1">Reference 1</option>
+      </select>
+    </p>
+
+    <input type="text" name="name" id="name" style="display: none;" disabled="disabled">
+    <p>
+      x: 
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input type="number" id="PArefx" step="1">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+      y: 
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input type="number" id="PArefy" step="1">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+
+    <p>
+      dx: 
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input type="number" id="PArefdx" step="1">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+      dy: 
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input type="number" id="PArefdy" step="1">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+
+    <section>
+      <button class="red" id="updatereference">Update Reference</button>
+      <img id="img_ref_org">
+      <button class="blue" id="enhancecontrast">Enhance Contrast</button>
+      <img id="img_ref">
+    </section>
+    <hr>
+    <p class="around">
+      <button class="red" id="PAsaveroi">Save</button>
+    </p>
+  </section>
+  <section>
+      <h4>Advanced **</h4>
+      <p>
+          SearchFieldX:
+          <span class="number">
+            <span onclick="minus(this)">-</span>
+            <input id="PA_SearchFieldX" type="number">
+            <span onclick="plus(this)" class="plus">+</span>
+          </span>
+      </p>
+      <p>
+          SearchFieldY:
+          <span class="number">
+            <span onclick="minus(this)">-</span>
+            <input id="PA_SearchFieldY" type="number">
+            <span onclick="plus(this)" class="plus">+</span>
+          </span>
+      </p>
+      <p>      
+          Mode:
+          <select id="PA_AlignmentAlgo">
+            <option value="Default">Default</option>
+            <option value="highAccuracy">HighAccuracy</option>
+            <option value="fast">Fast</option>
+          </select>
+      </p>
+      <hr>
+      <p class="around">
+        <button class="red" id="PAsavereboot">Save**</button>
+      </p>
+  </section>
+
+</section></div>
+  <div class="panel view" id="panelDigits" style="display: none;"><h1>Edit digits template</h1>
+
+<section class="row trans">
+
+  <section>
+
+    <canvas id="PDcanvas"></canvas>
+    <p class="center">
+      <input type="checkbox" id="Category_Digits_enabled"><label class="red">Enable edit</label>
+      <input type="checkbox" id="PDpointer"><label>Pointer</label>
+      <input type="checkbox" id="PDgrid"><label>Grid</label>
+    </p>
+  </section>
+  <section>
+    <p>
+      x:
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input type="number" id="PDrefx" step="1">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+      y:
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input type="number" id="PDrefy" step="1">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p>
+      dx:
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input type="number" id="PDrefdx" step="1">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+      dy:
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input type="number" id="PDrefdy" step="1">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p class="center">
+      <input type="checkbox" id="PDlockAR"><label>Lock aspect ratio</label>
+    </p>
+  </section>
+  <section>
+    <h4>Numbers</h4>
+    <p class="center">
+      <select id="PDNumbers_value1"></select>
+      <button class="green" id="PDrenameNumber">Rename</button>
+      <button class="red" id="PDremoveNumber">Delete</button>
+      <button class="blue" id="PDnewNumber">New number</button>
+    </p>
+    <hr>
+    <h4>Digits</h4>
+    <p class="around">
+      <select id="PDindex"></select>
+      <button id="PDmoveNext">move Next</button>
+      <button id="PDmovePrevious">move Previous</button>
+    </p>
+    <p class="around">
+      <button class="green" id="PDrenameROI">Rename</button>
+      <button class="red" id="PDdeleteROI">Delete</button>
+      <button class="blue" id="PDnewROI">New Digit</button>
+    </p>
+    <hr>
+    <p class="around">
+      <button class="red" id="PDsaveroi">Save changes</button>
+    </p>
+  </section>
+</section></div>
+  <div class="panel view" id="panelAnalogs" style="display: none;"><h1>Edit analog template</h1>
+<section class="row trans">
+
+  <section>
+
+    <canvas id="PANcanvas"></canvas>
+    <p class="center">
+      <input type="checkbox" id="Category_Analog_enabled"><label class="red">Enable edit</label>
+      <input type="checkbox" id="PANpointer"><label>Pointer</label>
+      <input type="checkbox" id="PANgrid"><label>Grid</label>
+    </p>
+  </section>
+  <section>
+    <p>
+      x:
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input type="number" id="PANrefx" step="1">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+      y:
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input type="number" id="PANrefy" step="1">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p>
+      dx:
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input type="number" id="PANrefdx" step="1">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+      dy:
+      <span class="number">
+        <span onclick="minus(this)">-</span>
+        <input type="number" id="PANrefdy" step="1">
+        <span onclick="plus(this)" class="plus">+</span>
+      </span>
+    </p>
+    <p class="center">
+     <input type="checkbox" id="PANlockAR"><label>Lock aspect ratio</label>
+    </p>
+  </section>
+  <section>
+    <h4>Number</h4>
+    <p class="center">
+      <select id="PANNumbers_value1"></select>
+      <button class="green" id="PANrenameNumber">Rename</button>
+      <button class="red" id="PANremoveNumber">Delete</button>
+      <button class="blue" id="PANnewNumber">New number</button>
+    </p>
+    <hr>
+    <h4>Analog</h4>
+    <p class="around">
+      <select id="PANindex"></select>
+      <button id="PANmoveNext">move Next</button>
+      <button id="PANmovePrevious">move Previous</button>
+    </p>
+    <p class="around">
+      <button class="green" id="PANrenameROI">Rename</button>
+      <button class="red" id="PANdeleteROI">Delete</button>
+      <button class="blue" id="PANnewROI">New ROI</button>
+    </p>
+    <hr>
+    <p class="around">
+      <button class="red" id="PANsaveroi">Save changes</button>
+    </p>
+  </section>
+</section></div>
+  <div class="panel view" id="panelMQTT" style="display: none;"><h1>MQTT</h1>
+<section>
+  <p class="center">
+    <input type="checkbox" id="PMQTT_EnabledChk"><label class="red">Enable MQTT</label>
+  </p>
+  <hr>
+  <p>
+    Uri:<input type="text" id="PMQTT_Uri">
+  </p>
+  <p>
+    MainTopic:<input type="text" id="PMQTT_MainTopic">
+  </p>
+  <p>
+    ClientID:<input type="text" id="PMQTT_ClientID">
+  </p>
+  <p>
+    user:<input type="text" id="PMQTT_user">
+  </p>
+  <p>
+    password:<input type="text" id="PMQTT_password">
+  </p>
+  <p class="center">
+    <input type="checkbox" id="PMQTT_SetRetainFlag"><label class="red">Set retain flag</label>
+  </p>
+  <p class="around">
+    <button class="red" id="PMQTT_SaveBtn">Save**</button>
+  </p>
+</section></div>
+  <div class="panel view" id="panelHelp" style="display: none;"><h1> Help? </h1>
+
+<section class="nav">
+  <ul>
+    <li><a href="#doc-firststeps"># First Steps</a></li>
+    <li>
+      <ul>
+        <li><a href="#doc-reference">1. Reference Image</a></li>
+        <li><a href="#doc-alignment">2. Alignment References</a></li>
+        <li><a href="#doc-digits">3. Define Digits</a></li>
+        <li><a href="#doc-params">5. General parameters</a></li>
+        <li><a href="#doc-finish">6. Finished!</a></li>
+      </ul>
+    </li>
+    <li><a href="#sysinfo"># System Info</a></li>
+  </ul>
+</section>
+
+
+<h2 id="doc-firststeps">First Steps</h2>
+<section id="doc-reference">
+  <h3>1. Reference Image</h3>
+  <p class="left">
+    The reference image is the base to define the digits, counters and references positions.
+  </p>
+  <p class="left">
+    Firstly you see the default image. Use the Button "Create New Reference" to start to create your own
+    reference image.
+  </p>
+  <p class="left">
+    Most important feature is a straight alignment of the image. Use the Pre-rotate angle and the fine alignment
+    to adjust the rotation of the image
+  </p>
+  <p class="left">
+    Store the reference image by pushing "Update Reference Image".
+  </p>
+</section>
+
+<section id="doc-alignment">
+  <h3>2. Alignment References</h3>
+  <p class="left">
+    Two opposite alignment references are needed to identify unique fix points on the image.
+  </p>
+  <p class="left">
+    Firstly you see the default image. Use the Button "Create New Reference" to start to create your own
+    reference image.
+  </p>
+  <p class="left">
+    Most important feature is a straight alignment of the image. Use the Pre-rotate angle and the fine alignment
+    to adjust the rotation of the image
+  </p>
+  <p class="left">
+    Store the reference image by pushing "Update Reference Image".
+  </p>
+  <p class="left">You can switch between the two reference with "Select Reference".</p>
+  <p class="left">Don't forget to save your changes with "Save to Config.ini"!.</p>
+</section>
+
+<section id="doc-digits">
+  <h3>3. Define Digits</h3>
+  <p class="left">
+    Here you define your digits you want to read. If you have more than one number on the reading you can define
+    several numbers with the "Number" selector. There you can also define new numbers.
+  </p>
+  <p class="left">
+    With the drop down menue "ROI x" you can change between the different digits. Mark them with the
+    mouse or the coordinates.
+  </p>
+  <p class="left">
+    To create new ROIs use "New ROIs". The order of the ROIs defines the positon within the reading. 
+  </p>
+  <p class="left">
+    You can change it with "move Next" / "move Previous".
+  </p>
+  <p class="left">
+    Don't forget to save your changes with "Save all to Config.ini"!.
+  </p>
+</section>
+
+<section id="doc-analogs">
+  <h3>4. Define Analogs</h3>
+  <p class="left">
+    Here you define your analog counters you want to read. If you have more than one number on the reading you
+    can define several numbers with the "Number" selector. There you can also define new numbers. If you
+    do not have analog counters delete all ROIs.
+  </p>
+  <p class="left">
+    With the drop down menue "ROI x" you can change between the different counters. Mark them with the
+    mouse or the coordinates.
+  </p>
+  <p class="left">
+    To create new ROIs use "New ROIs". The order of the ROIs defines the positon within the reading. 
+    You can change it with "move Next" / "move Previous".
+  </p>
+  <p class="left">
+    Don't forget to save your changes with "Save all to Config.ini"!.
+  </p>
+</section>
+
+<section id="doc-params">
+  <h3>5. General parameters</h3>
+    <p class="left">
+      Here you define additional setting. The settings should fit for a normal setup.
+    </p>
+    <p class="left">
+      Only if you want to connect to a MQTT-broker you need to adjust the corresponding parameters.
+    </p>
+    <p class="left">
+      Don't forget to save your changes with "Save all to Config.ini"!.
+    </p>
+    <p class="left">
+      You should not reboot here, but leave the setup modus on the next page.
+    </p>
+  </section>
+
+  <section id="doc-finish">
+    <h3>6. Finished!</h3>
+      <p class="left">
+        Now you are finished with the setup and ready to reboot to the normal mode.
+      </p>
+      <p class="left">
+        Once you have pushed below button, the setup modus will be left and the digitizer start to normal operation
+        mode.
+      </p>
+      <p class="left">
+        After a view seconds you can reload this page. It will take two to four minutes, until you get the first
+        reading.
+      </p>
+      <p class="left">
+        All settings can be changed as well in the configuration menue in normal operation mode.
+      </p>
+      <p class="around">
+        <button id="leaveSetup">Leave Setup Modus and Reboot to Normal</button>
+      </p>
+  </section>
+
+  <h2>System Info</h2>
+  <section>
+      <p>Last restart:<span id="starttime"></span></p>
+      <p>Hostname:<span id="Hostname"></span></p>
+      <p>IP-Address:<span id="IP"></span></p>
+      <p>WLan-SSID:<span id="SSID"></span></p>
+      <p>Git-Branch:<span id="GitBranch"></span></p>
+      <p>Git-Base-Branch:<span id="GitBaseBranch"></span></p>
+      <p>Git-Version:<span id="GitVersion"></span></p>
+      <p>Build Time:<span id="BuildTime"></span></p>
+      <p>HTML Version:<span id="HTMLVersion"></span></p>
+  </section>
+
+
+</div>
+
+  <div class="panel view" id="panelInfluxDB" style="display: none;"><h1>InfluxDB</h1>
+<section>
+  <p class="center">
+    <input type="checkbox" id="PIDB_EnabledChk"><label class="red">Enable InfluxDB</label>
+  </p>
+  <hr>
+  <p>
+    Uri:<input type="text" id="PIDB_Uri">
+  </p>
+  <p>
+    Database:<input type="text" id="PIDB_Database">
+  </p>
+  <p>
+    Measurement:<input type="text" id="PIDB_Measurement">
+  </p>
+  <p>
+    user:<input type="text" id="PIDB_user">
+  </p>
+  <p>
+    password:<input type="text" id="PIDB_password">
+  </p>
+  <p class="around">
+    <button class="red" id="PIDB_SaveBtn">Save**</button>
+  </p>
+</section></div>
+  <div class="panel view" id="panelFileServer" style="display: none;"><h1> File Server </h1>
+<section>
+  <p class="around">
+    </p><ul id="FS_navBar">
+      <li></li>
+    </ul>
+  <p></p>
+  <p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Size</th>
+          <th>Readonly</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody id="filesTable">
+      </tbody>
+    </table>
+  </p>
+</section>
+<h2>Upload file:</h2>
+<section>
+  <p class="center">
+      <button class="blue"><input id="newfile" type="file"></button>
+  </p>
+  <p>
+    <label for="filepath">Set path on server</label>
+    <input id="filepath" type="text">
+  </p>
+  <p class="around">
+    <button class="red" id="upload">Upload</button>
+  </p>
+</section>
+
+</div>
+  <div class="panel view" id="panelSchedule" style="display: none;"><h1>Device</h1>
+<section>
+    <p>
+        Auto start:
+        <select id="PCFG_AutoStart">
+            <option value="true">ON</option>
+            <option value="false">OFF</option>
+        </select>
+    </p>
+    <p>
+        Minutes between starts:
+        <span class="number">
+          <span onclick="minus(this)">-</span>
+          <input type="number" id="PCFG_Interval" step="1">
+          <span onclick="plus(this)" class="plus">+</span>
+        </span>
+    </p>
+</section>
+<h1>Logger</h1>
+<section class="row trans">
+    <section>
+        <h4>Camera photos</h4>
+        <p class="center">
+            <input type="checkbox" id="PCFG_RawLogEnabledChk"><label class="red">Enable log</label>
+        </p>
+        <p>
+            Store path:
+            <input type="text" id="PCFG_RawLogImageLocation">
+        </p>
+        <p>
+            Days to store logs:
+            <span class="number">
+              <span onclick="minus(this)">-</span>
+              <input type="number" id="PCFG_RawLogfileRetentionInDays" step="1">
+              <span onclick="plus(this)" class="plus">+</span>
+            </span>
+        </p>
+    </section>
+    <section>
+        <h4>Digit cuts</h4>
+        <p class="center">
+            <input type="checkbox" id="PCFG_DigitLogEnabledChk"><label class="red">Enable log</label>
+        </p>
+        <p>
+            Store path:
+            <input type="text" id="PCFG_DigitLogImageLocation">
+        </p>
+        <p>
+            Days to store logs:
+            <span class="number">
+              <span onclick="minus(this)">-</span>
+              <input type="number" id="PCFG_DigitLogfileRetentionInDays" step="1">
+              <span onclick="plus(this)" class="plus">+</span>
+            </span>
+        </p>
+    </section>
+    <section>
+        <h4>Analog cuts</h4>
+        <p class="center">
+            <input type="checkbox" id="PCFG_AnalogLogEnabledChk"><label class="red">Enable log</label>
+        </p>
+        <p>
+            Store path:
+            <input type="text" id="PCFG_AnalogLogImageLocation">
+        </p>
+        <p>
+            Days to store logs:
+            <span class="number">
+              <span onclick="minus(this)">-</span>
+              <input type="number" id="PCFG_AnalogLogfileRetentionInDays" step="1">
+              <span onclick="plus(this)" class="plus">+</span>
+            </span>
+        </p>
+    </section>
+</section>
+<section>
+    <h3>Save and Reboot</h3>
+    <p class="around">
+        <button class="red" id="PCFG_SaveBtn">Save**</button>
+    </p>
+</section></div>
+  <div class="panel view" id="panelCNN" style="display: none;"><h1>CNN</h1>
+<section class="row trans">
+    <section>
+        <h4>Digits</h4>
+        <p class="center">
+            <input type="checkbox" id="PCNN_DigitEnabledChk"><label class="red">Enable Recognition</label>
+        </p>
+        <p>
+            Model:<input type="text" id="PCNN_DigitModel">
+        </p>
+        <p class="center">
+            <input type="checkbox" name="threshold" id="PCNN_CNNGoodThreshold"><label for="threshold">Enable threshold</label>
+        </p>
+        <hr>
+        <h4>Analogs</h4>
+        <p class="center">
+            <input type="checkbox" id="PCNN_AnalogEnabledChk"><label class="red">Enable Recognition</label>
+        </p>
+        <p>
+            Model:<input type="text" id="PCNN_AnalogModel">
+        </p>
+        <hr>
+        <p class="around">
+            <button class="red" id="PCNN_SaveBtn">Save**</button>
+        </p>
+    </section>
+</section></div>
+  <div class="panel view" id="panelPostprocessing" style="display: none;"><h1>PostProcessing</h1>
+<section>
+    <p class="center">
+        <input type="checkbox" id="PCPPSS_EnabledChk"><label>Enable PostProcessing</label>
+    </p>
+    <hr>
+    <p class="center">
+        <input type="checkbox" id="PCPPSS_PreValueUse"><label>Use previous values</label>
+    </p>
+    <p>
+        Time window:
+        <span class="number">
+            <span onclick="minus(this)">-</span>
+            <input id="PCPPSS_PreValueAgeStartup" type="number">
+            <span onclick="plus(this)" class="plus">+</span>
+        </span>
+    </p>
+    <p class="center">
+        <input type="checkbox" id="PCPPSS_AllowNegativeRates"><label>Allow negative rates</label>
+    </p>
+    <p class="center">
+        <input type="checkbox" id="PCPPSS_ErrorMessage"><label>Allow error messages</label>
+    </p>
+    <hr>
+    <p class="around">
+        <button class="red" id="PCPPSS_SaveBtn">Save**</button>
+    </p>
+</section></div>
+  <div class="panel view" id="panelReboot" style="display: none;">
+<h1 id="PRBO_title">Rebooting...</h1>
+<section class="row trans">
+    <p id="PRBO_fastreboot">NOW</p>
+    <p id="PRBO_counter">0</p>
+    <p id="PRBO_cancelreboot">CANCEL</p>
+    <div id="PRBO_spinner" class="spinner"></div>
+</section></div>
+  <div class="panel view" id="panelConfig" style="display: none;"><h1>Edit Config.ini</h1>
+<section>
+    <textarea id="PCFG_text" cols="100" rows="33"></textarea>
+    <p><button id="PCFG_save">Save **</button></p>
+    <p><button id="PCFG_reboot">Reboot</button></p>
+</section></div>
+  <div class="panel view" id="panelOTA" style="display: none;"><h1>OTA</h1>
+<section class="trans">
+    <section>
+        <h3>Releases</h3>
+        <p class="left">
+            Check the release page to see if there is an update available.
+        </p>
+        <p class="center">
+            <a href="https://github.com/jomjol/AI-on-the-edge-device/releases"><button class="green"> Release Page </button></a>
+        </p>
+        <h4>Tips:</h4>
+        <p class="left">
+            Normally, the overall update package (<i>update__*.zip</i>) is your best choice!
+        </p>
+        <p class="left">
+            Alternatively you can use the old style firmware__*.bin and web interface (html__*.zip).
+        </p>
+        <p class="left">
+            However it is strongly recommended to update firmware and web interface at the same time!
+        </p>
+    </section>
+
+    <section>
+        <h4>Update</h4>
+        <p class="left">Do not reload the page or switch to another page while the update is in progress!</p>
+    
+        <p class="left">
+            Select the file containig the update ( <i>update__*.zip</i>, <i>firmware__*.bin</i>,
+            <i>html__*.zip</i>, <i>*.tfl/tflite</i>)
+        </p>
+        <p class="center">
+            <button class="blue"><input id="newfile" type="file"></button>
+        </p>
+    
+        <p class="center">
+            <button class="red" id="doUpdate">Upload and update.</button>
+        </p>
+    </section>
+    <section>
+        <h4><span id="status">Status: idle</span></h4>
+        <h4><span id="progress"></span></h4>
+    </section>
+
+
+
+
+</section></div>
+  <div class="view" id="panelIframe" style="display: none;">
+    <iframe name="iframe" id="iframe" src="" title="fileserver" allowfullscreen></iframe>
+  </div>
+
+
+  <a class="fixedUpNav" href="#panelHomeBtn">Up</a>
+</body>
+
+</html>
